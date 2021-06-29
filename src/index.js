@@ -121,12 +121,16 @@ class NextNProgress extends React.Component {
     Router.events.on('routeChangeStart', this.routeChangeStart);
     Router.events.on('routeChangeComplete', this.routeChangeEnd);
     Router.events.on('routeChangeError', this.routeChangeEnd);
+    window.addEventListener('routeChangeStart', this.routeChangeStart)
+    window.addEventListener('routeChangeEnd', this.routeChangeEnd)
   }
 
   componentWillUnmount() {
     Router.events.off('routeChangeStart', this.routeChangeStart);
     Router.events.off('routeChangeComplete', this.routeChangeEnd);
     Router.events.off('routeChangeError', this.routeChangeEnd);
+    window.removeEventListener('routeChangeStart', this.routeChangeStart)
+    window.removeEventListener('routeChangeEnd', this.routeChangeEnd)
   }
 }
 
